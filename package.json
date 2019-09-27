@@ -1,0 +1,23 @@
+{
+  "name": "api-inventarios",
+  "version": "1.0.0",
+  "description": "A simple api ",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodri-dot-git/api-inventarios.git"
+  },
+  "author": "Rodrigo de Leon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodri-dot-git/api-inventarios/issues"
+  },
+  "homepage": "https://github.com/rodri-dot-git/api-inventarios#readme",
+  "dependencies": {
+    "apollo-server": "^2.9.4",
+    "mongoose": "^5.7.1"
+  }
+}

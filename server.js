@@ -4,6 +4,7 @@ const {
 } = require('apollo-server');
 const urlDB = "mongodb+srv://rodridlc:Mauricio10@cluster0-gitot.azure.mongodb.net/inventarios";
 const Mongoose = require("mongoose");
+const Schema = Mongoose.Schema;
 
 const typeDefs = gql `
 	type Articulo {
@@ -37,8 +38,6 @@ const typeDefs = gql `
         addInventario(idAlmacen: String, nombre: String): Inventario
 	}
 `;
-
-const Schema = Mongoose.Schema;
 
 Mongoose.connect(urlDB, {
     useNewUrlParser: true,

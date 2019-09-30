@@ -14,8 +14,8 @@ const typeDefs = gql `
     }
     type EntradaInventario {
         id: ID
-        articulo: Articulo
-        inventario: Inventario
+        idArticulo: Articulo
+        idInventario: Inventario
         cantidad: Float
     }
     type Almacen {
@@ -38,39 +38,70 @@ const typeDefs = gql `
 	}
 `;
 
+const Schema = Mongoose.Schema;
+
 Mongoose.connect(urlDB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => {
-    console.log('connected to DB')
 });
 
 const ArticuloModel = Mongoose.model("Articulo", {
+    _id: Schema.Types.ObjectId,
     nombre: String,
     codigoDeBarras: String,
     codigo: String
-});
+}, "articulos");
 const InventarioModel = Mongoose.model("Inventario", {
-    almacen: {type: Mongoose.Schema.Types.ObjectId, ref: 'Almacen'},
+    _id: Schema.Types.ObjectId,
+    almacen: {
+        type: Mongoose.Schema.Types.ObjectId,
+        ref: 'Almacen',
+        resolver: async (parent, args, {}) => {
+            return await AlmacenModel.findOne({
+                _id: parent.almacen
+            });
+        }
+    },
     nombre: String
-});
+}, "inventarios");
 const AlmacenModel = Mongoose.model("Almacen", {
+    _id: Schema.Types.ObjectId,
     nombre: String
-});
+}, "almacens");
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
-    idArticulo: {type: Mongoose.Schema.Types.ObjectId, ref: 'Articulo'},
-    idInventario: {type: Mongoose.Schema.Types.ObjectId, ref: 'Inventario'},
+    _id: Schema.Types.ObjectId,
+    idArticulo: {
+        type: Mongoose.Schema.Types.ObjectId, 
+        ref: 'Articulo',
+        resolver: async (parent, args, {}) => {
+            return await ArticuloModel.findOne({
+                _id: parent.idArticulo
+            });
+        }
+    },
+    idInventario: {
+        type: Mongoose.Schema.Types.ObjectId,
+        ref: 'Inventario',
+        resolver: async (parent, args, {}) => {
+            return await InventarioModel.findOne({
+                _id: parent.idInventario
+            });
+        }
+    },
     cantidad: Number
-});
+}, "entradainventarios");
 
 const resolvers = {
     Query: {
         articulo: (_, args) => ArticuloModel.findOne({
             'codigoDeBarras': args.codigoDeBarras
         }).exec(),
-        entradaInventario: (_, args) => EntradaInventarioModel.find({
-            idInventario: args.inventario
-        }).populate('articulos').exec(),
+        entradaInventario: async (_, args, {}) => {
+            return await EntradaInventarioModel.find({idInventario: args.inventario})
+            .populate('idArticulo')
+            .populate('idInventario')
+            .exec();
+        },
     },
     Mutation: {
         addEntradaInventario: (_, args) => {

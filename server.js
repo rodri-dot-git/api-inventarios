@@ -24,8 +24,8 @@ const typeDefs = gql `
     }
     type Inventario {
         id: ID
-        almacen: Almacen
         nombre: String
+        almacen: Almacen
     }
 	type Query {
         articulo(codigoDeBarras: String): Articulo
@@ -53,16 +53,15 @@ const ArticuloModel = Mongoose.model("Articulo", {
 }, "articulos");
 const InventarioModel = Mongoose.model("Inventario", {
     _id: Schema.Types.ObjectId,
+    nombre: String,
     almacen: {
         type: Mongoose.Schema.Types.ObjectId,
         ref: 'Almacen',
-        resolver: async (parent, args, {}) => {
-            return await AlmacenModel.findOne({
+        resolver: async (parent, args, {}) =>
+            await AlmacenModel.findOne({
                 _id: parent.almacen
-            });
-        }
+            }),
     },
-    nombre: String
 }, "inventarios");
 const AlmacenModel = Mongoose.model("Almacen", {
     _id: Schema.Types.ObjectId,
@@ -71,50 +70,51 @@ const AlmacenModel = Mongoose.model("Almacen", {
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
     _id: Schema.Types.ObjectId,
     idArticulo: {
-        type: Mongoose.Schema.Types.ObjectId, 
+        type: Mongoose.Schema.Types.ObjectId,
         ref: 'Articulo',
-        resolver: async (parent, args, {}) => {
-            return await ArticuloModel.findOne({
+        resolver: async (parent, args, {}) =>
+            await ArticuloModel.findOne({
                 _id: parent.idArticulo
-            });
-        }
+            })
     },
     idInventario: {
         type: Mongoose.Schema.Types.ObjectId,
         ref: 'Inventario',
-        resolver: async (parent, args, {}) => {
-            return await InventarioModel.findOne({
+        resolver: async (parent, args, {}) =>
+            await InventarioModel.findOne({
                 _id: parent.idInventario
-            });
-        }
+            })
+            .populate('almacen')
+            .exec(),
     },
     cantidad: Number
 }, "entradainventarios");
 
 const resolvers = {
     Query: {
-        articulo: (_, args) => ArticuloModel.findOne({
+        articulo: async (_, args) => await ArticuloModel.findOne({
             'codigoDeBarras': args.codigoDeBarras
         }).exec(),
-        entradaInventario: async (_, args, {}) => {
-            return await EntradaInventarioModel.find({idInventario: args.inventario})
+        entradaInventario: async (_, args, {}) =>
+            await EntradaInventarioModel.find({
+                idInventario: args.inventario
+            })
             .populate('idArticulo')
             .populate('idInventario')
-            .exec();
-        },
+            .exec(),
     },
     Mutation: {
-        addEntradaInventario: (_, args) => {
+        addEntradaInventario: async (_, args) => {
             var entrada = new EntradaInventarioModel(args)
-            return entrada.save();
+            return await entrada.save();
         },
-        addAlmacen: (_, args) => {
+        addAlmacen: async (_, args) => {
             var almacen = new AlmacenModel(args)
-            return almacen.save();
+            return await almacen.save();
         },
-        addInventario: (_, args) => {
+        addInventario: async (_, args) => {
             var inventario = new InventarioModel(args)
-            return inventario.save();
+            return await inventario.save();
         },
     },
 };

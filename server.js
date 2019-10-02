@@ -50,6 +50,7 @@ const ArticuloModel = Mongoose.model("Articulo", {
     codigoDeBarras: String,
     codigo: String
 }, "articulos");
+
 const InventarioModel = Mongoose.model("Inventario", {
     _id: Schema.Types.ObjectId,
     nombre: String,
@@ -62,10 +63,12 @@ const InventarioModel = Mongoose.model("Inventario", {
             }),
     },
 }, "inventarios");
+
 const AlmacenModel = Mongoose.model("Almacen", {
     _id: Schema.Types.ObjectId,
     nombre: String
 }, "almacens");
+
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
     _id: Schema.Types.ObjectId,
     idArticulo: {

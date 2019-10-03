@@ -1,6 +1,6 @@
 const { gql } = require('apollo-server');
 
-module.exports.schema = gql `
+const typeDefs = gql `
 	type Articulo {
 		id: ID
 		nombre: String
@@ -32,3 +32,4 @@ module.exports.schema = gql `
 		addInventario(idAlmacen: String, nombre: String): Inventario
 	}
 `;
+module.exports.typeDefs = typeDefs 

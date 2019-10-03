@@ -1,13 +1,13 @@
-const {	ApolloServer, gql } = require('apollo-server');
-const typeDefs = require('./schema').schema
+const {	ApolloServer } = require('apollo-server')
+const typeDefs = require('./schema').typeDefs
 const resolvers = require('./graphql')
-const urlDB = "mongodb+srv://rodridlc:Mauricio10@cluster0-gitot.azure.mongodb.net/inventarios";
-const Mongoose = require("mongoose");
+const Mongoose = require("mongoose")
+const urlDB = "mongodb+srv://rodridlc:Mauricio10@cluster0-gitot.azure.mongodb.net/inventarios"
 
 Mongoose.connect(urlDB, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-});
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
 
 const server = new ApolloServer({
 	typeDefs,

@@ -48,14 +48,12 @@ Mongoose.connect(process.env.DB, {
 });
 
 const ArticuloModel = Mongoose.model("Articulo", {
-	_id: Schema.Types.ObjectId,
 	nombre: String,
 	codigoDeBarras: String,
 	codigo: String
 }, "articulos");
 
 const InventarioModel = Mongoose.model("Inventario", {
-	_id: Schema.Types.ObjectId,
 	nombre: String,
 	almacen: {
 		type: Mongoose.Schema.Types.ObjectId,
@@ -68,12 +66,10 @@ const InventarioModel = Mongoose.model("Inventario", {
 }, "inventarios");
 
 const AlmacenModel = Mongoose.model("Almacen", {
-	_id: Schema.Types.ObjectId,
 	nombre: String
 }, "almacens");
 
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
-	_id: Schema.Types.ObjectId,
 	idArticulo: {
 		type: Mongoose.Schema.Types.ObjectId,
 		ref: 'Articulo',
@@ -114,7 +110,12 @@ const resolvers = {
 	},
 	Mutation: {
 		addEntradaInventario: async (_, args) => {
-			var entrada = new EntradaInventarioModel(args)
+			var entrada = new EntradaInventarioModel({
+				idArticulo: Mongoose.Types.ObjectId(args.idArticulo),
+				idInventario: Mongoose.Types.ObjectId(args.idInventario),
+				cantidad: args.cantidad
+				
+			})
 			return await entrada.save();
 		},
 		addAlmacen: async (_, args) => {

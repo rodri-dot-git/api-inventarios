@@ -2,7 +2,6 @@ const {
 	ApolloServer,
 	gql
 } = require('apollo-server');
-const urlDB = "mongodb+srv://rodridlc:Mauricio10@cluster0-gitot.azure.mongodb.net/inventarios";
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 const dotenv = require('dotenv')
@@ -43,7 +42,7 @@ const typeDefs = gql `
 
 dotenv.config();
 
-Mongoose.connect(urlDB, {
+Mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });

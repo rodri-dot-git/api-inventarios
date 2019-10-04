@@ -4,7 +4,7 @@ const {
 } = require('apollo-server');
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 
 const typeDefs = gql `
 	type Articulo {

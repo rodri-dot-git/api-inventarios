@@ -24,6 +24,14 @@ Initialize project with:
 npm i
 ```
 
+### Running the server
+
+Run the project with:
+
+```
+npm start
+```
+
 ## Tests
 
 ### Queries
@@ -61,10 +69,10 @@ mutation EntradaInventario($inv: String!, $art: String!){
 
 * [ApolloServer](https://www.apollographql.com/docs/apollo-server/) - The framework used
 * [GraphQL](https://graphql.org) - Query language used
-* [NodeJS](https://rometools.github.io/rome/) - Runtime engine
-* [MongoDB](https://rometools.github.io/rome/) - Database
+* [NodeJS](https://rometools.github.io/rome/) - Runtime environment
+* [MongoDB](https://rometools.github.io/rome/) - Database engine
 
-* **Rodrigo de Leon** - *Initial work* - [rodri-dot-git](https://github.com/rodri-dot-git)
+* **Rodrigo de Leon** - [rodri-dot-git](https://github.com/rodri-dot-git)
 
 ## Acknowledgments
 

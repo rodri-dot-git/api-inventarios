@@ -31,6 +31,7 @@ const typeDefs = gql `
 	type Query {
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
+		inventario(inventario: String) : Inventario
 	}
 	type Mutation {
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario
@@ -97,12 +98,16 @@ const resolvers = {
 		articulo: async (_, args) => await ArticuloModel.findOne({
 			'codigoDeBarras': args.codigoDeBarras
 		}).exec(),
-		entradaInventario: async (_, args, {}) =>
+		entradaInventario: async (_, args) =>
 			await EntradaInventarioModel.find({
 				idInventario: args.inventario
 			})
 			.populate('idArticulo')
 			.populate('idInventario')
+			.exec(),
+		inventario: async (_, args) =>
+			await InventarioModel.findOne({_id: args.inventario})
+			.populate('almacen')
 			.exec(),
 	},
 	Mutation: {
@@ -127,6 +132,6 @@ const server = new ApolloServer({
 	introspection: true
 });
 
-server.listen(process.env.PORT || 4000).then(({url}) => {
+server.listen(process.env.PORT || 5000).then(({url}) => {
 	console.log(`🚀  Server ready at ${url}`);
 });

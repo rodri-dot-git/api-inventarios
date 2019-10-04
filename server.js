@@ -110,12 +110,7 @@ const resolvers = {
 	},
 	Mutation: {
 		addEntradaInventario: async (_, args) => {
-			var entrada = new EntradaInventarioModel({
-				idArticulo: Mongoose.Types.ObjectId(args.idArticulo),
-				idInventario: Mongoose.Types.ObjectId(args.idInventario),
-				cantidad: args.cantidad
-				
-			})
+			var entrada = new EntradaInventarioModel(args)
 			return await entrada.save();
 		},
 		addAlmacen: async (_, args) => {

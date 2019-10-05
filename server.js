@@ -37,7 +37,7 @@ const typeDefs = gql `
 		addAlmacen(nombre: String): Almacen
 		addInventario(idAlmacen: String, nombre: String): Inventario
 	}
-`;
+`
 
 dotenv.config()
 

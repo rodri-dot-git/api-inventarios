@@ -99,8 +99,19 @@ const resolvers = {
 			await EntradaInventarioModel.find({
 				idInventario: args.inventario
 			})
-			.populate('idArticulo')
-			.populate('idInventario')
+			.populate([{
+				model: 'Inventario',
+				path: 'idInventario',
+				populate: {
+					model: 'Almacen',
+					path: 'almacen'
+				}
+			},
+			{
+				model: 'Articulo',
+				path: 'idArticulo'
+			}
+		])
 			.exec(),
 		inventario: async (_, args) =>
 			await InventarioModel.findOne({_id: args.inventario})

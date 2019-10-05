@@ -1,11 +1,10 @@
 const {
 	ApolloServer,
 	gql
-} = require('apollo-server');
-const Mongoose = require("mongoose");
-const Schema = Mongoose.Schema;
-const dotenv = require('dotenv');
-
+} = require('apollo-server')
+const Mongoose = require("mongoose")
+const Schema = Mongoose.Schema
+const dotenv = require('dotenv')
 const typeDefs = gql `
 	type Articulo {
 		id: ID
@@ -40,18 +39,18 @@ const typeDefs = gql `
 	}
 `;
 
-dotenv.config();
+dotenv.config()
 
 Mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
-});
+})
 
 const ArticuloModel = Mongoose.model("Articulo", {
 	nombre: String,
 	codigoDeBarras: String,
 	codigo: String
-}, "articulos");
+}, "articulos")
 
 const InventarioModel = Mongoose.model("Inventario", {
 	nombre: String,
@@ -63,11 +62,11 @@ const InventarioModel = Mongoose.model("Inventario", {
 				_id: parent.almacen
 			}),
 	},
-}, "inventarios");
+}, "inventarios")
 
 const AlmacenModel = Mongoose.model("Almacen", {
 	nombre: String
-}, "almacens");
+}, "almacens")
 
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
 	idArticulo: {
@@ -89,7 +88,7 @@ const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
 			.exec(),
 	},
 	cantidad: Number
-}, "entradainventarios");
+}, "entradainventarios")
 
 const resolvers = {
 	Query: {
@@ -122,15 +121,15 @@ const resolvers = {
 			return await inventario.save();
 		},
 	},
-};
+}
 
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	introspection: true,
 	playground: true
-});
+})
 
 server.listen(process.env.PORT || 5000).then(({url}) => {
 	console.log(`🚀  Server ready at ${url}`);
-});
+})

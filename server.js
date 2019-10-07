@@ -11,7 +11,7 @@ Mongoose.connect(process.env.DB, {
 const {
 	ApolloServer
 } = require('apollo-server')
-const typeDefs = require('./schema').typeDefs
+const typeDefs = require('./graphql/schema').typeDefs
 const resolvers = require('./graphql').resolvers
 
 const server = new ApolloServer({

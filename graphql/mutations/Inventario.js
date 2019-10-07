@@ -1,4 +1,4 @@
-const InventarioModel = require('../../models/Inventario').InventarioModel
+const InventarioModel = require('../../models/Inventario.js').InventarioModel
 
 module.exports = {
     Inventario: {

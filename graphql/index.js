@@ -16,3 +16,4 @@ module.exports.resolvers = merge(
     Articulo,
     InventarioQ
 )
+module.exports.typeDefs = require('./schema').typeDefs

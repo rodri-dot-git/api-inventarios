@@ -1,4 +1,4 @@
-const ArticuloModel = require('../../models/Articulo').ArticuloModel
+const ArticuloModel = require('../../models/Articulo.js').ArticuloModel
 
 module.exports = {
     Articulo: {

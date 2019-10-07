@@ -33,4 +33,5 @@ const typeDefs = gql `
 		addInventario(idAlmacen: String, nombre: String): Inventario
 	}
 `;
+
 module.exports.typeDefs = typeDefs 

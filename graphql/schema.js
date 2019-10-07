@@ -25,7 +25,7 @@ const typeDefs = gql `
 	type Query {
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
-		inventario: Inventario
+		inventario(inventario: String): Inventario
 	}
 	type Mutation {
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario

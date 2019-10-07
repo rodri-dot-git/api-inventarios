@@ -1,6 +1,4 @@
-const {
-    merge
-} = require("lodash")
+const merge = require("lodash").merge
 const Almacen = require('./mutations/Almacen.js').Almacen
 const EntradaInventario = require('./mutations/EntradaInventario.js').EntradaInventario
 const Inventario = require('./mutations/Inventario.js').Inventario

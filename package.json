@@ -18,6 +18,7 @@
   "homepage": "https://github.com/rodri-dot-git/api-inventarios#readme",
   "dependencies": {
     "apollo-server": "^2.9.4",
+    "core-util-is": "^1.0.2",
     "dotenv": "^8.1.0",
     "graphql": "^14.5.8",
     "lodash": "^4.17.15",

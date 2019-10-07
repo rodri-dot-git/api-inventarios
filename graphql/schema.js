@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const gql = require('apollo-server').gql
 
 const typeDefs = gql `
 	type Articulo {

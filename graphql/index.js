@@ -1,12 +1,12 @@
 const {
     merge
 } = require("lodash")
-const Almacen = require('./mutations/Almacen').Almacen
-const EntradaInventario = require('./mutations/EntradaInventario').EntradaInventario
-const Inventario = require('./mutations/Inventario').Inventario
-const Articulo = require('./queries/Articulo').Articulo
-const EntradaInventarioQ = require('./queries/Entradainventario').EntradaInventario
-const InventarioQ = require('./queries/Inventario').Inventario
+const Almacen = require('./mutations/Almacen.js').Almacen
+const EntradaInventario = require('./mutations/EntradaInventario.js').EntradaInventario
+const Inventario = require('./mutations/Inventario.js').Inventario
+const Articulo = require('./queries/Articulo.js').Articulo
+const EntradaInventarioQ = require('./queries/Entradainventario.js').EntradaInventario
+const InventarioQ = require('./queries/Inventario.js').Inventario
 
 module.exports.resolvers = merge(
     Almacen,

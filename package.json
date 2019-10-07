@@ -4,7 +4,8 @@
   "description": "A simple api ",
   "main": "server.js",
   "scripts": {
-    "test": "node server"
+    "start": "node server",
+    "test": "nodemon server"
   },
   "repository": {
     "type": "git",

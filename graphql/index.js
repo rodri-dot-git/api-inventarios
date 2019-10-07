@@ -5,7 +5,7 @@ const Almacen = require('./mutations/Almacen.js').Almacen
 const EntradaInventario = require('./mutations/EntradaInventario.js').EntradaInventario
 const Inventario = require('./mutations/Inventario.js').Inventario
 const Articulo = require('./queries/Articulo.js').Articulo
-const EntradaInventarioQ = require('./queries/Entradainventario.js').EntradaInventario
+const EntradaInventarioQ = require('./queries/EntradaInventario.js').EntradaInventario
 const InventarioQ = require('./queries/Inventario.js').Inventario
 
 module.exports.resolvers = merge(

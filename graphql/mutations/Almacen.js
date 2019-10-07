@@ -1,4 +1,4 @@
-const AlmacenModel = require('../../models/Almacen.js').AlmacenModel
+const AlmacenModel = require('../../models').Almacen
 
 module.exports = {
     Almacen: {

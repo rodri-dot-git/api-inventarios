@@ -1,19 +1,24 @@
 const Mongoose = require("mongoose")
-const urlDB = "mongodb+srv://rodridlc:Mauricio10@cluster0-gitot.azure.mongodb.net/inventarios"
-Mongoose.connect(urlDB, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	})
+const dotenv = require("dotenv")
+
+dotenv.config()
+
+Mongoose.connect(process.env.DB, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+})
+
 const {
 	ApolloServer
 } = require('apollo-server')
 const typeDefs = require('./schema').typeDefs
-const resolvers = require('./graphql')
+const resolvers = require('./graphql').resolvers
 
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection: true
+	introspection: true,
+	playground: true
 });
 
 server.listen(process.env.PORT || 4000).then(({url}) => {

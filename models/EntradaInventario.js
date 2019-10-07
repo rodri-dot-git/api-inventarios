@@ -1,10 +1,8 @@
 const Mongoose = require("mongoose")
-const Schema = Mongoose.Schema;
 const ArticuloModel = require('./Articulo')
 const InventarioModel = require('./Inventario')
 
 const EntradaInventarioModel = Mongoose.model("EntradaInventario", {
-    _id: Schema.Types.ObjectId,
     idArticulo: {
         type: Mongoose.Schema.Types.ObjectId,
         ref: 'Articulo',

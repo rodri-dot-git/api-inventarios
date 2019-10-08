@@ -26,6 +26,7 @@ const typeDefs = gql `
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
 		inventario(inventario: String): Inventario
+		inventarios: [Inventario]
 	}
 	type Mutation {
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario

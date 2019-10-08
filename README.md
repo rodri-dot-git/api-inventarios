@@ -32,7 +32,8 @@ Run the project with:
 npm start
 ```
 
-## Tests
+## Examples
+For more information go to the API playground
 
 ### Queries
 

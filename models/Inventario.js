@@ -19,6 +19,10 @@ const InventarioModel = Mongoose.model("Inventario", {
                 _id: parent.usuario
             }),
     },
+    date: {
+        type: Date,
+        default: Date.now
+    },
 }, "inventarios");
 
 module.exports.InventarioModel = InventarioModel

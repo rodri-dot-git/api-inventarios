@@ -1,6 +1,7 @@
 const gql = require('apollo-server').gql
 
 const typeDefs = gql `
+	scalar Date
 	type Articulo {
 		id: ID
 		nombre: String
@@ -22,11 +23,13 @@ const typeDefs = gql `
 		nombre: String
 		almacen: Almacen
 		usuario: Usuario
+		fecha: Date
 	}
 	type Usuario {
 		id: ID
 		username: String
 		password: String
+		tipo: String
 	}
 	type Query {
 		articulo(codigoDeBarras: String): Articulo
@@ -40,6 +43,7 @@ const typeDefs = gql `
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario
 		addAlmacen(nombre: String): Almacen
 		addInventario(idAlmacen: String, nombre: String, username: String): Inventario
+		addUsuario(username: String, password: String, tipo: String): Usuario
 	}
 `;
 

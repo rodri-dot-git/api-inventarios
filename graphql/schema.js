@@ -33,6 +33,7 @@ const typeDefs = gql `
 		entradaInventario(inventario: String): [EntradaInventario]
 		inventario(inventario: String): Inventario
 		inventarios(idUsername: String): [Inventario]
+		inventariosa: [Inventario]
 		usuario(username: String, password: String): Usuario
 	}
 	type Mutation {

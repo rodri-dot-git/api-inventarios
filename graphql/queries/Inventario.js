@@ -12,6 +12,7 @@ module.exports = {
             inventarios: async (_, args) => await InventarioModel.find({
                 usuario: args.idUsername
             }).exec(),
+            inventariosa: async (_, args) => await InventarioModel.find().exec(),
         }
     }
 }

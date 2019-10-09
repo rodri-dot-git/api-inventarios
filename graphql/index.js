@@ -7,7 +7,7 @@ const EntradaInventarioQ = require('./queries/EntradaInventario.js').EntradaInve
 const InventarioQ = require('./queries/Inventario.js').Inventario
 const Usuario = require('./queries/Usuario').Usuario
 const UsuarioM = require('./mutations/Usuario').Usuario
-const Date = require('./DateResolver').resolverMap
+const DateType = require('./DateResolver').resolverMap
 
 module.exports.resolvers = merge(
     Almacen,
@@ -17,6 +17,7 @@ module.exports.resolvers = merge(
     Articulo,
     InventarioQ,
     Usuario,
-    UsuarioM
+    UsuarioM,
+    DateType
 )
 module.exports.typeDefs = require('./schema').typeDefs

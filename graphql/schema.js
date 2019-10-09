@@ -14,6 +14,10 @@ const typeDefs = gql `
 		idInventario: Inventario
 		cantidad: Float
 	}
+	type Organizacion {
+		id: ID
+		nombre: String
+	}
 	type Almacen {
 		id: ID
 		nombre: String
@@ -30,6 +34,7 @@ const typeDefs = gql `
 		username: String
 		password: String
 		tipo: String
+		organizacion: Organizacion
 	}
 	type Query {
 		articulo(codigoDeBarras: String): Articulo

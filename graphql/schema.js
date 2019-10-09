@@ -22,12 +22,17 @@ const typeDefs = gql `
 		nombre: String
 		almacen: Almacen
 	}
+	type Usuario {
+		id: ID
+		username: String
+		password: String
+	}
 	type Query {
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
 		inventario(inventario: String): Inventario
 		inventarios: [Inventario]
-		usuario: Usuario
+		usuario(username: String, password: String): Usuario
 	}
 	type Mutation {
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario

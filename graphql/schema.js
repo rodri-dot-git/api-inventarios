@@ -21,6 +21,7 @@ const typeDefs = gql `
 		id: ID
 		nombre: String
 		almacen: Almacen
+		usuario: Usuario
 	}
 	type Usuario {
 		id: ID

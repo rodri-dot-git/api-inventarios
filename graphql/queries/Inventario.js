@@ -9,7 +9,7 @@ module.exports = {
                 })
                 .populate('almacen')
                 .exec(),
-            inventarios: async () => await InventarioModel.find({
+            inventarios: async (_, args) => await InventarioModel.find({
                 usuario: args.idUsername
             }).exec(),
         }

@@ -38,7 +38,7 @@ const typeDefs = gql `
 	type Mutation {
 		addEntradaInventario(idArticulo: String, idInventario: String, cantidad: Float): EntradaInventario
 		addAlmacen(nombre: String): Almacen
-		addInventario(idAlmacen: String, nombre: String): Inventario
+		addInventario(idAlmacen: String, nombre: String, username: String): Inventario
 	}
 `;
 

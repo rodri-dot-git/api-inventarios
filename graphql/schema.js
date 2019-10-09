@@ -32,7 +32,7 @@ const typeDefs = gql `
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
 		inventario(inventario: String): Inventario
-		inventarios: [Inventario]
+		inventarios(idUsername: String): [Inventario]
 		usuario(username: String, password: String): Usuario
 	}
 	type Mutation {

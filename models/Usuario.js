@@ -1,7 +1,10 @@
 const Mongoose = require("mongoose")
 
 const UsuarioModel = Mongoose.model("Usuario", {
-    username: String,
+    username: {
+        type: String,
+        unique: true
+    },
     password: String,
     tipo: String,
     organizacion: {

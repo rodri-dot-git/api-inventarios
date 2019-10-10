@@ -6,7 +6,9 @@ module.exports = {
             usuario: async (_, args) => await UsuarioModel.findOne({
                 'username': args.username,
                 'password': args.password
-            }).exec(),
+            })
+            .populate('organizacion')
+            .exec(),
         }
     }
 }

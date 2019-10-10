@@ -32,7 +32,6 @@ const typeDefs = gql `
 	type Usuario {
 		id: ID
 		username: String
-		password: String
 		tipo: String
 		organizacion: Organizacion
 	}

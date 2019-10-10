@@ -10,6 +10,7 @@ dotenv.config()
 
 Mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
+	useCreateIndex: true,
 	useUnifiedTopology: true
 })
 

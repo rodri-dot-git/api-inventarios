@@ -26,7 +26,7 @@ const typeDefs = gql `
 		id: ID
 		nombre: String
 		almacen: Almacen
-		usuario: Usuario
+		organizacion: Organizacion
 		fecha: Date
 	}
 	type Usuario {
@@ -39,7 +39,7 @@ const typeDefs = gql `
 		articulo(codigoDeBarras: String): Articulo
 		entradaInventario(inventario: String): [EntradaInventario]
 		inventario(inventario: String): Inventario
-		inventarios(idUsername: String): [Inventario]
+		inventarios(organizacion: String): [Inventario]
 		inventariosa: [Inventario]
 		usuario(username: String, password: String): Usuario
 		organizacion(id: String): Organizacion

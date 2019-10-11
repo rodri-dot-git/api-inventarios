@@ -9,6 +9,7 @@ const Usuario = require('./queries/Usuario').Usuario
 const UsuarioM = require('./mutations/Usuario').Usuario
 const DateType = require('./DateResolver').resolverMap
 const Organizacion = require('./queries/Organizacion').Organizacion
+const Almacen = require('./queries/Almacen').Almacen
 
 module.exports.resolvers = merge(
     Almacen,
@@ -20,6 +21,7 @@ module.exports.resolvers = merge(
     Usuario,
     UsuarioM,
     DateType,
-    Organizacion
+    Organizacion,
+    Almacen
 )
 module.exports.typeDefs = require('./schema').typeDefs

@@ -36,7 +36,6 @@ module.exports = {
                     }
                 ])
                 .exec()
-                console.log(datos);
                 datos.forEach(x => {
                     for (let i = 0; i < datos.length; i++) {
                         if(x.idArticulo == datos[i].idArticulo)

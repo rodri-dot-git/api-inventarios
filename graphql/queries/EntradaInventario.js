@@ -38,7 +38,7 @@ module.exports = {
                 .exec()
                 datos.forEach(x => {
                     for (let i = 0; i < datos.length; i++) {
-                        if(x.idArticulo == datos[i].idArticulo)
+                        if(x.idArticulo == datos[i].idArticulo && x._id != datos[i]._id)
                             x.cantidad += datos[i].cantidad
                     }
                 })

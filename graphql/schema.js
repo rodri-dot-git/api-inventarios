@@ -28,7 +28,7 @@ const typeDefs = gql `
 		nombre: String
 		almacen: Almacen
 		organizacion: Organizacion
-		fecha: Date
+		date: Date
 	}
 	type Usuario {
 		id: ID

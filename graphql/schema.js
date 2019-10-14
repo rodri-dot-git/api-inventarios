@@ -35,6 +35,7 @@ const typeDefs = gql `
 		username: String
 		tipo: String
 		organizacion: Organizacion
+		estatus: Boolean
 	}
 	type Query {
 		articulo(codigoDeBarras: String): Articulo

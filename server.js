@@ -29,7 +29,9 @@ const server = new ApolloServer({
 });
 
 app.use(moesifMiddleware)
-
-server.applyMiddleware({app})
+server.applyMiddleware({
+	app,
+	path: '/'
+})
 
 app.listen((process.env.PORT || 4000), () => console.log('🚀🚀 Server ready'));

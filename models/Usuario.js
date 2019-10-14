@@ -15,6 +15,10 @@ const UsuarioModel = Mongoose.model("Usuario", {
                 _id: parent.Organizacion
             }),
     },
+    estatus: {
+        type: Boolean,
+        default: true
+    }
 }, "usuarios");
 
 module.exports.UsuarioModel = UsuarioModel

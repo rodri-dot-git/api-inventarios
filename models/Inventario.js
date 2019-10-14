@@ -15,7 +15,7 @@ const InventarioModel = Mongoose.model("Inventario", {
         type: Mongoose.Schema.Types.ObjectId,
         ref: 'Organizacion',
         resolver: async (parent, args, {}) =>
-            await Organizacion.findOne({
+            await Usuario.findOne({
                 _id: parent.usuario
             }),
     },

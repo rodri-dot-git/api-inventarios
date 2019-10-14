@@ -1,4 +1,4 @@
-const gql = require('apollo-server').gql
+const gql = require('apollo-server-express').gql
 
 const typeDefs = gql `
 	scalar Date

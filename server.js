@@ -1,12 +1,19 @@
 const dotenv = require("dotenv")
 const Mongoose = require("mongoose")
-const ApolloServer = require('apollo-server').ApolloServer
+const ApolloServer = require('apollo-server-express').ApolloServer
 const {
 	typeDefs,
 	resolvers
 } = require('./graphql')
-
+const moesifExpress = require('moesif-express');
+const express = require('express')
 dotenv.config()
+
+const app = express();
+const moesifMiddleware = moesifExpress({
+	applicationId: process.env.MOESIF_APPLICATION_ID,
+	logBody: true,
+});
 
 Mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
@@ -21,6 +28,8 @@ const server = new ApolloServer({
 	playground: true
 });
 
-server.listen(process.env.PORT || 4000).then(({
-	url
-}) => console.log(`🚀🚀 Server ready at ${url}`));
+app.use(moesifMiddleware)
+
+server.applyMiddleware({app})
+
+app.listen((process.env.PORT || 4000), () => console.log('🚀🚀 Server ready'));

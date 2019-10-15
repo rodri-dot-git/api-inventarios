@@ -9,6 +9,9 @@ module.exports = {
             })
             .populate('organizacion')
             .exec(),
+            usuarioId: async (_, args) => await UsuarioModel.findOne({
+                '_id': args.id 
+            })
         }
     }
 }

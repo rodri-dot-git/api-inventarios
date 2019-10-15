@@ -12,6 +12,8 @@ module.exports = {
             usuarioId: async (_, args) => await UsuarioModel.findOne({
                 '_id': args.id 
             })
+            .populate('organizacion')
+            .exec()
         }
     }
 }

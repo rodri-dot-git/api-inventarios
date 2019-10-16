@@ -31,7 +31,8 @@ const server = new ApolloServer({
 app.use(moesifMiddleware)
 server.applyMiddleware({
 	app,
-	path: '/'
+	path: '/',
+	gui: process.env.DEBUG
 })
 
 app.listen((process.env.PORT || 4000), () => {

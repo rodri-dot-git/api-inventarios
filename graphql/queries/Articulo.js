@@ -9,10 +9,10 @@ module.exports = {
                     var res = await ArticuloModel.findOne({
                         'codigoDeBarras': args.codigoDeBarras
                     }).exec();
-                    rollbar.log('Articulo fetch correcto con cdb')
+                    rollbar.info('Articulo fetch correcto con cdb')
                     return res;
                 } catch (error) {
-                    rollbar.log(`Error en articulo fetch. error: ${error}`)
+                    rollbar.error(`Error en articulo fetch. error: ${error}`)
                 }
             }
         }

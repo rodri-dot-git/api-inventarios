@@ -7,10 +7,10 @@ module.exports = {
             addInventario: async (_, args) => {
                 try {
                     var inventario = await new InventarioModel(args).save()
-                    rollbar.log('Inventario insert correcto')
+                    rollbar.info('Inventario insert correcto')
                     return inventario;
                 } catch (error) {
-                    rollbar.log(`Error en inventario insert. error: ${error}`)
+                    rollbar.error(`Error en inventario insert. error: ${error}`)
                 }
             },
         }

@@ -12,9 +12,9 @@ module.exports = {
                         })
                         .populate('organizacion')
                         .exec();
-                    rollbar.log('Login correcto')
+                    rollbar.info('Login correcto')
                 } catch (error) {
-                    rollbar.log(`Error en login. error: ${error}`)
+                    rollbar.error(`Error en login. error: ${error}`)
                 }
                 return res;
             },
@@ -25,9 +25,9 @@ module.exports = {
                         })
                         .populate('organizacion')
                         .exec();
-                        rollbar.log('User fetch correcto')
+                        rollbar.info('User fetch correcto')
                 } catch (error) {
-                    rollbar.log(`Error en user fetch. error: ${error}`)
+                    rollbar.error(`Error en user fetch. error: ${error}`)
                 }
                 return res;
             }

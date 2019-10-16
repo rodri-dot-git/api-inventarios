@@ -37,10 +37,10 @@ module.exports = {
                                 x.cantidad += datos[i].cantidad
                         }
                     })
-                    rollbar.log('Entrada inventario fetch correcto')
+                    rollbar.info('Entrada inventario fetch correcto')
                     return getUnique(datos, "idArticulo");
                 } catch (error) {
-                    rollbar.log(`Error en entrada inventario fetch. error: ${error}`)
+                    rollbar.error(`Error en entrada inventario fetch. error: ${error}`)
                 }
             }
         }

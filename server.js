@@ -7,6 +7,7 @@ const {
 } = require('./graphql')
 const moesifExpress = require('moesif-express');
 const express = require('express')
+const rollbar = require('./utils').rollbar
 dotenv.config()
 
 const app = express();
@@ -34,4 +35,7 @@ server.applyMiddleware({
 	path: '/'
 })
 
-app.listen((process.env.PORT || 4000), () => console.log('🚀🚀 Server ready'));
+app.listen((process.env.PORT || 4000), () => {
+	rollbar.info('🚀🚀 Server ready')
+	console.log('🚀🚀 Server ready')
+});

@@ -9,10 +9,10 @@ module.exports = {
                     var res = await OrganizacionModel.findOne({
                         '_id': args.id
                     }).exec();
-                    rollbar.log('Organizacion fetch correcto');
+                    rollbar.info('Organizacion fetch correcto');
                     return res;
                 } catch (error) {
-                    rollbar.log(`Error en inventario fetch. error: ${error}`);
+                    rollbar.error(`Error en inventario fetch. error: ${error}`);
                 }
             }
         }

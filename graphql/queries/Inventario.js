@@ -11,10 +11,10 @@ module.exports = {
                         })
                         .populate('almacen')
                         .exec();
-                    rollbar.log('Inventario fetch correcto')
+                    rollbar.info('Inventario fetch correcto')
                     return res;
                 } catch (error) {
-                    rollbar.log(`Error en inventario fetch. error: ${error}`)
+                    rollbar.error(`Error en inventario fetch. error: ${error}`)
                 }
             },
             inventarios: async (_, args) => {
@@ -22,19 +22,19 @@ module.exports = {
                     var res = await InventarioModel.find({
                         usuario: args.organizacion
                     }).exec();
-                    rollbar.log('Inventarios fetch correcto')
+                    rollbar.info('Inventarios fetch correcto')
                     return res;
                 } catch (error) {
-                    rollbar.log(`Error en inventario fetch. error: ${error}`)
+                    rollbar.error(`Error en inventario fetch. error: ${error}`)
                 }
             },
             inventariosa: async (_, args) => {
                 try {
                     var res = await InventarioModel.find().exec();
-                    rollbar.log('Inventarisa fetch correcto')
+                    rollbar.info('Inventarisa fetch correcto')
                     return res
                 } catch (error) {
-                    rollbar.log(`Error en inventario fetch. error: ${error}`)
+                    rollbar.error(`Error en inventario fetch. error: ${error}`)
                 }
             }
         }

@@ -7,10 +7,10 @@ module.exports = {
             addUsuario: async (_, args) => {
                 try {
                     var usuario = await new UsuarioModel(args).save()
-                    rollbar.log('Usuario agregado correctamente')
+                    rollbar.info('Usuario agregado correctamente')
                     return await usuario;
                 } catch (error) {
-                    rollbar.log(`Error en user fetch. error: ${error}`)
+                    rollbar.error(`Error en user fetch. error: ${error}`)
                 }
             },
         }

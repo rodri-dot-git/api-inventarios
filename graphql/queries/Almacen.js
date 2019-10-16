@@ -9,10 +9,10 @@ module.exports = {
                     var res = await AlmacenModel.find({
                             'organizacion': args.org
                         }).exec();
-                        rollbar.log('Almacen fetch correcto')
+                        rollbar.info('Almacen fetch correcto')
                         return res;
                 } catch (error) {
-                    rollbar.log(`Error en almacen fetch. error: ${error}`)
+                    rollbar.error(`Error en almacen fetch. error: ${error}`)
                 }
             }
         }

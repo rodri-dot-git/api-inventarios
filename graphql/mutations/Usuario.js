@@ -11,6 +11,7 @@ module.exports = {
                     return await usuario;
                 } catch (error) {
                     rollbar.error(`Error en user fetch. error: ${error}`)
+                    return error;
                 }
             },
         }

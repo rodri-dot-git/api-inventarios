@@ -1,4 +1,5 @@
 const EntradaInventarioModel = require('../../models').EntradaInventario
+const rollbar = require('../../utils').rollbar
 
 function getUnique(arr, comp) {
     const unique = arr
@@ -8,35 +9,39 @@ function getUnique(arr, comp) {
     return unique;
 }
 
-
 module.exports = {
     EntradaInventario: {
         Query: {
-            entradaInventario: async (_, args) =>{
-                var datos = await EntradaInventarioModel.find({
-                    idInventario: args.inventario
-                })
-                .populate([{
-                        model: 'Inventario',
-                        path: 'idInventario',
-                        populate: {
-                            model: 'Almacen',
-                            path: 'almacen'
+            entradaInventario: async (_, args) => {
+                try {
+                    var datos = await EntradaInventarioModel.find({
+                            idInventario: args.inventario
+                        })
+                        .populate([{
+                                model: 'Inventario',
+                                path: 'idInventario',
+                                populate: {
+                                    model: 'Almacen',
+                                    path: 'almacen'
+                                }
+                            },
+                            {
+                                model: 'Articulo',
+                                path: 'idArticulo'
+                            }
+                        ])
+                        .exec()
+                    datos.forEach(x => {
+                        for (let i = 0; i < datos.length; i++) {
+                            if (x.idArticulo == datos[i].idArticulo && x._id != datos[i]._id)
+                                x.cantidad += datos[i].cantidad
                         }
-                    },
-                    {
-                        model: 'Articulo',
-                        path: 'idArticulo'
-                    }
-                ])
-                .exec()
-                datos.forEach(x => {
-                    for (let i = 0; i < datos.length; i++) {
-                        if(x.idArticulo == datos[i].idArticulo && x._id != datos[i]._id)
-                            x.cantidad += datos[i].cantidad
-                    }
-                })
-                return getUnique(datos, "idArticulo");
+                    })
+                    rollbar.log('Entrada inventario fetch correcto')
+                    return getUnique(datos, "idArticulo");
+                } catch (error) {
+                    rollbar.log(`Error en entrada inventario fetch. error: ${error}`)
+                }
             }
         }
     }

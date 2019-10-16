@@ -1,11 +1,20 @@
 const OrganizacionModel = require('../../models').Organizacion
+const rollbar = require('../../utils').rollbar
 
 module.exports = {
     Organizacion: {
         Query: {
-            organizacion: async (_, args) => await OrganizacionModel.findOne({
-                '_id': args.id
-            }).exec(),
+            organizacion: async (_, args) => {
+                try {
+                    var res = await OrganizacionModel.findOne({
+                        '_id': args.id
+                    }).exec();
+                    rollbar.log('Organizacion fetch correcto');
+                    return res;
+                } catch (error) {
+                    rollbar.log(`Error en inventario fetch. error: ${error}`);
+                }
+            }
         }
     }
 }

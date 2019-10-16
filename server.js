@@ -26,7 +26,7 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	introspection: true,
-	playground: true
+	playground: process.env.DEBUG
 });
 
 app.use(moesifMiddleware)

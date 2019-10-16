@@ -25,8 +25,7 @@ Mongoose.connect(process.env.DB, {
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection: true,
-	playground: process.env.DEBUG
+	introspection: true
 });
 
 app.use(moesifMiddleware)

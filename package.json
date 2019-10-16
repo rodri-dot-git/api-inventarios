@@ -28,6 +28,7 @@
     "moesif-express": "^2.9.11",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.1",
-    "rollbar": "^2.13.0"
+    "rollbar": "^2.13.0",
+    "sha.js": "^2.4.11"
   }
 }

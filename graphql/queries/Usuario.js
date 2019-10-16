@@ -1,5 +1,6 @@
 const UsuarioModel = require('../../models').Usuario
 const rollbar = require('../../utils').rollbar
+const shajs = require('sha.js')
 
 module.exports = {
     Usuario: {
@@ -8,7 +9,7 @@ module.exports = {
                 try {
                     var res = await UsuarioModel.findOne({
                             'username': args.username,
-                            'password': args.password
+                            'password': shajs('sha256').update(args.password).digest('hex')
                         })
                         .populate('organizacion')
                         .exec();

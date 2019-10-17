@@ -5,16 +5,12 @@ const {
 	typeDefs,
 	resolvers
 } = require('./graphql')
-const moesifExpress = require('moesif-express');
+const { moesifMiddleware } = require('./middleware')
 const express = require('express')
 const rollbar = require('./utils').rollbar
 dotenv.config()
 
 const app = express();
-const moesifMiddleware = moesifExpress({
-	applicationId: process.env.MOESIF_APPLICATION_ID,
-	logBody: true,
-});
 
 Mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,

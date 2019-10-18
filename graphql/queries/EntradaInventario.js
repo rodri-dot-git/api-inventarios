@@ -32,7 +32,7 @@ module.exports = {
                         ])
                         .exec()
                     datos.forEach(x => {
-                        x.cantidad = x.cantidad * x.unidad
+                        x.cantidad = x.cantidad * x.idArticulo.unidad
                     })
                     rollbar.log(datos);
                     datos.forEach(x => {

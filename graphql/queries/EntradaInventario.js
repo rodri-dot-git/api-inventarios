@@ -34,7 +34,6 @@ module.exports = {
                     datos.forEach(x => {
                         x.cantidad = x.cantidad * x.idArticulo.unidad
                     })
-                    rollbar.log(datos);
                     datos.forEach(x => {
                         for (let i = 0; i < datos.length; i++) {
                             if (x.idArticulo == datos[i].idArticulo && x._id != datos[i]._id)

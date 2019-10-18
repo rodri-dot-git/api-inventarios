@@ -7,6 +7,7 @@ const typeDefs = gql `
 		nombre: String
 		codigoDeBarras: String
 		codigo: String
+		unidad: Int
 	}
 	type EntradaInventario {
 		id: ID

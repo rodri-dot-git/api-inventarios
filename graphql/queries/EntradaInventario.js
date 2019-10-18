@@ -32,13 +32,16 @@ module.exports = {
                         ])
                         .exec()
                     datos.forEach(x => {
+                        x.cantidad = x.cantidad * x.unidad
+                    })
+                    datos.forEach(x => {
                         for (let i = 0; i < datos.length; i++) {
                             if (x.idArticulo == datos[i].idArticulo && x._id != datos[i]._id)
                                 x.cantidad += datos[i].cantidad
                         }
                     })
                     rollbar.info('Entrada inventario fetch correcto')
-                    return getUnique(datos, "idArticulo");
+                    return getUnique(datos, "codigo");
                 } catch (error) {
                     rollbar.error(`Error en entrada inventario fetch. error: ${error}`)
                 }

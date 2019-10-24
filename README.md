@@ -70,8 +70,8 @@ mutation EntradaInventario($inv: String!, $art: String!){
 
 * [ApolloServer](https://www.apollographql.com/docs/apollo-server/) - The framework used
 * [GraphQL](https://graphql.org) - Query language used
-* [NodeJS](https://rometools.github.io/rome/) - Runtime environment
-* [MongoDB](https://rometools.github.io/rome/) - Database engine
+* [NodeJS](https://nodejs.org) - Runtime environment
+* [MongoDB](https://www.mongodb.com) - Database engine
 
 * **Rodrigo de Leon** - [rodri-dot-git](https://github.com/rodri-dot-git)
 

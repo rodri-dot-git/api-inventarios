@@ -41,7 +41,7 @@ module.exports = {
                         }
                     })
                     rollbar.info('Entrada inventario fetch correcto')
-                    return getUnique(datos, "codigo");
+                    return datos
                 } catch (error) {
                     rollbar.error(`Error en entrada inventario fetch. error: ${error}`)
                 }
